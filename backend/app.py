@@ -42,8 +42,8 @@ def Calcula_Menor_Preco(Meu_Canino_Feliz, Vai_Rex, ChowChawgas):
         'ChowChawgas': 800
     }
     opcoes = {
-        'Meu Canino Feliz': Meu_Canino_Feliz,
-        'Vai Rex': Vai_Rex,
+        'Meu_Canino_Feliz': Meu_Canino_Feliz,
+        'Vai_Rex': Vai_Rex,
         'ChowChawgas': ChowChawgas
     }
 
@@ -53,7 +53,7 @@ def Calcula_Menor_Preco(Meu_Canino_Feliz, Vai_Rex, ChowChawgas):
     if len(opcoes_com_menor_preco) > 1:
         menor_distancia = min([distancias[opcao] for opcao in opcoes_com_menor_preco])
         opcao_menor_distancia = [opcao for opcao in opcoes_com_menor_preco if distancias[opcao] == menor_distancia]
-        return opcao_menor_distancia[1], menor_preco
+        return opcao_menor_distancia[0], menor_preco
     else:
         return opcoes_com_menor_preco[0], menor_preco
 
@@ -64,7 +64,6 @@ def calcula():
         if "ddmmyyyy" in data and "qtd_pequenos" in data and "qtd_grandes" in data:
             ddmmyyyy, qtd_pequenos, qtd_grandes = data["ddmmyyyy"], int(data["qtd_pequenos"]), int(data["qtd_grandes"])
 
-            # tratamento para retornar uma mensagem de erro caso o valor de qtd_pequenos ou qtd_grandes seja negativo e que seja mostrado que houve um erro
             if qtd_pequenos < 0 or qtd_grandes < 0:
                 return jsonify({"error": "Quantidade de cachorros negativa"}), 400
 
